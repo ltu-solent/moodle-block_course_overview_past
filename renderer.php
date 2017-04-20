@@ -108,9 +108,7 @@ class block_course_overview_past_renderer extends plugin_renderer_base {
                 if (empty($course->visible)) {
                     $attributes['class'] = 'dimmed';
                 }
-                $courseurl = new moodle_url('/course/view.php', array('id' => $course->id));
-// SSU_AMEND START - COURSE OVERVIEW PAST 
-                //$coursefullname = format_string(get_course_display_name_for_list($course), true, $course->id);				
+                $courseurl = new moodle_url('/course/view.php', array('id' => $course->id));				
 				$coursefullname = $course->fullname;
                 /*** the third occurance ***/
                 $offset = 2;
@@ -130,7 +128,6 @@ class block_course_overview_past_renderer extends plugin_renderer_base {
 				}else{
 					$coursefullname = $course->fullname;
 				}
-//SSU_AMEND END
 				
                 $link = html_writer::link($courseurl, $coursefullname, $attributes);
                 $html .= $this->output->heading($link, 2, 'title');
