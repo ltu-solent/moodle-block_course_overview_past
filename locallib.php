@@ -262,7 +262,7 @@ function enrol_get_my_courses_past($fields = NULL, $sort = 'visible DESC,sortord
     $wheres = implode(" AND ", $wheres);
     //note: we can not use DISTINCT + text fields due to Oracle and MS limitations, that is why we have the subselect there
 // SSU_AMEND START - COURSE OVERVIEW PAST
-// Edit course parent categories each year to show past courses (opposite of current block)
+	$settings = get_config('theme_solent2017');
 	$sql = "SELECT $coursefields $ccselect
               FROM {course} c
               JOIN (SELECT DISTINCT e.courseid
@@ -273,7 +273,7 @@ function enrol_get_my_courses_past($fields = NULL, $sort = 'visible DESC,sortord
            $ccjoin
 			  JOIN {course_categories} cc ON c.category = cc.id
              WHERE $wheres
-			 AND cc.parent NOT IN (23,50,156,157,158,159,161,160,193,200,201,202,203)
+			 AND cc.parent NOT IN ( $settings->schools )
           $orderby";
 // SSU_AMEND END
     $params['userid']  = $USER->id;
