@@ -112,7 +112,7 @@ class block_course_overview_past_renderer extends plugin_renderer_base {
 
 				$currentcategory = coursecat::get($course->category, IGNORE_MISSING);
 				
-				if($currentcategory->name == 'Unit Pages'){
+				if(strtolower($currentcategory->name) == 'unit pages'){
 					$coursefullname = $course->fullname;
 					$coursefullname .= '<span class="solent_startdate">Unit runs from '.   date('d/m/Y',$course->startdate) .' - ' .  date('d/m/Y',$course->enddate) . '</span>';
 				}else{
